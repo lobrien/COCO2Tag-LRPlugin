@@ -2,7 +2,6 @@ local LrApplication = import 'LrApplication'
 local LrDialogs = import 'LrDialogs'
 local LrTasks = import 'LrTasks'
 local LrLogger = import 'LrLogger'
-local KwUtils = require 'KwUtils'
 
 LrTasks.startAsyncTask(function ()
   local catalog = LrApplication.activeCatalog()
@@ -18,10 +17,6 @@ LrTasks.startAsyncTask(function ()
     return
   end
 
-  -- local allKeys = KwUtils.getAllKeywords(catalog)
-  --catalog:withWriteAccessDo('createKeyword', function(context) 
-  --  catalog:createKeyword(category_str, {}, true, nil, true)
-  --end )
   catalog:withWriteAccessDo('addToPhoto', function(context) 
     local keyword = catalog:createKeyword(category_str, {}, true, nil, true)
     photo:addKeyword(keyword)
